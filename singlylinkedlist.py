@@ -1,51 +1,40 @@
-
 class Node:
-    def __init__(self, data):
+
+    def _init_(self, data):
         self.data = data
         self.next = None
 
 
 class LinkedList:
-    def __init__(self):
+    def _init_(self):
         self.head = None
 
-    def insert(self, data):
-        newnode = Node(data)
+    def create(self, values):
+       
+        for value in values:
+            new_node = Node(value)
 
-        if self.head is None:
-            self.head = newnode
-        else:
-            temp = self.head
+            if self.head is None:
+                self.head = new_node
+            else:
+                current = self.head
 
-            while temp.next:
-                temp = temp.next
+                while current.next is not None:
+                    current = current.next
 
-            temp.next = newnode
+            
+                current.next = new_node
 
-    def delete(self):
-        if self.head is None:
+    def traverse(self):
+        
+        current = self.head
+
+        if current is None:
             print("Linked list is empty")
-        else:
-            self.head = self.head.next
+            return
 
-    def display(self):
-        temp = self.head
-
-        while temp:
-            print(temp.data, end=" -> ")
-            temp = temp.next
+        while current is not None:
+            print(current.data, end=" -> ")
+            current = current.next
 
         print("None")
-
-
-l = LinkedList()
-
-l.insert(10)
-l.insert(20)
-l.insert(30)
-
-l.display()
-
-l.delete()
-
-l.display()
