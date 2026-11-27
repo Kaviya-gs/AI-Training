@@ -1,37 +1,28 @@
+class Stack:
+    def _init_(self):
+        self.items = []
 
-class stack:
-    def __init__(self):
-        self.stack = []
+    def push(self, value):
+        self.items.append(value)
+        print(value, "pushed into stack")
 
-    def push(self, data):
-        self.stack.append(data)
-    
     def pop(self):
-        if len(self.stack) == 0:
-           print("stack is empty")
-        else:
-           return self.stack.pop()
+        if self.is_empty():
+            print("Stack Underflow: stack is empty")
+            return None
+        return self.items.pop()
 
     def peek(self):
-         if len(self.stack) == 0:
-            print("stack is empty")
-         else:
-            return self.stack[-1]
-    
+        if self.is_empty():
+            print("Stack is empty")
+            return None
+        return self.items[-1]
+
+    def is_empty(self):
+        return len(self.items) == 0
+
     def display(self):
-        print(self.stack)
-
-
-s = stack()
-
-s.push(10)
-s.push(20)
-s.push(30)
-
-s.display()
-
-s.pop()
-
-s.display()
-
-print("Top element:", s.peek())
+        if self.is_empty():
+            print("Stack is empty")
+        else:
+            print("Stack (bottom -> top):", self.items)
